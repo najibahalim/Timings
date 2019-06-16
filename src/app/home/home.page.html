@@ -1,16 +1,181 @@
 <ion-header>
   <ion-toolbar>
+  <ion-buttons end>
     <ion-title>
-     Best App
+      Prayer Timings
+       
     </ion-title>
+    <ion-button (click)="reset()">Refresh</ion-button>
+</ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-button (click)="xyc()">Click Here to Send GPS Location</ion-button>
+  <div id="container">
+  <ion-list>
+    <ion-list-header style="font-size: 3">
+      <h1><ion-label color="secondary">{{datetoday}}</ion-label></h1> 
+    </ion-list-header>
+    {{location}}
+    <!-- Choice 1----------------------------------------------------- -->
+    <span *ngIf="choice==1">
+    <ion-item > 
+      <ion-label color="success" text-wrap>Sunrise Today:</ion-label>
+      <ion-datetime class="ip" placeholder="Enter Time" display-format=" HH:mm:ss:ss" [(ngModel)]="sunrise1"></ion-datetime>
+    </ion-item>
 
-  <ion-card>
-  {{sub}}
-  </ion-card>
+    <ion-item *ngIf="calc">
+      <ion-label position="fixed">Noon Today: </ion-label>
+      <ion-input text-right readonly [(ngModel)]="noon"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr Start  Today: </ion-label>
+      <ion-input readonly text-right [(ngModel)]="zuhrs"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr End  Today:</ion-label>
+      <ion-input readonly  text-right [(ngModel)]="zuhre"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap> Asr End Today:</ion-label>
+      <ion-input readonly text-right  [(ngModel)]="asre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="success" text-wrap>Sunset / Maghrib Start Today:</ion-label>
+      <ion-datetime class="ip" display-format=" HH:mm:ss" placeholder="Enter Time" [(ngModel)]="sunset1"></ion-datetime >
+    </ion-item>
+
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Isha Start Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="ishas"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Isha End / Shafa Start Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="ishae"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Shafa End / Fajr Start  Tomorrow:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="fajrs"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Fajr End Tomorrow</ion-label>
+      <ion-input readonly text-right [(ngModel)]="fajre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="success" text-wrap>Sunrise  Tomorrow:</ion-label>
+      <ion-datetime class="ip" placeholder=" Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunrise2"></ion-datetime>
+    </ion-item>
+  </span>
+  <!-- End choice 1-------------------------------------- -->
+  <span *ngIf="choice==2">
+  <!-- Choice 2----------------------------------------------------- -->
+    <ion-item>
+      <ion-label  color="success" text-wrap>Sunset Yesterday</ion-label>
+      <ion-datetime class="ip"  placeholder="Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunset0"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Isha Start Yesterday:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="ishas"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Isha End / Shafa Start Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="ishae"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Shafa End / Fajr Start Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="fajrs"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Fajr End Today</ion-label>
+      <ion-input readonly text-right [(ngModel)]="fajre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="success" text-wrap>Sunrise Today:</ion-label>
+      <ion-datetime class="ip" placeholder="Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunrise1"></ion-datetime>
+    </ion-item>
+    
+    <ion-item *ngIf="calc">
+      <ion-label position="fixed">Noon Today: </ion-label>
+      <ion-input text-right readonly [(ngModel)]="noon"></ion-input>
+    </ion-item>
+    
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr Start Today: </ion-label>
+      <ion-input readonly text-right [(ngModel)]="zuhrs"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr End Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="zuhre"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap> Asr End Today:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="asre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="success" text-wrap>Sunset / Maghrib Start Today:</ion-label>
+      <ion-datetime class="ip" display-format=" HH:mm:ss" placeholder="Enter Time" [(ngModel)]="sunset1"></ion-datetime>
+    </ion-item>
+    </span>
+  <!-- End choice 2-------------------------------------- -->
+
+  
+  <span *ngIf="choice==3">
+  <!-- Choice 3----------------------------------------------------- -->
+  <ion-item>
+    <ion-label color="success" text-wrap>Sunset Today</ion-label>
+    <ion-datetime class="ip"  placeholder="Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunset1"></ion-datetime>
+  </ion-item>
+  <ion-item *ngIf="calc">
+    <ion-label text-wrap>Isha Start Today:</ion-label>
+    <ion-input readonly text-right [(ngModel)]="ishas"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="calc">
+    <ion-label text-wrap>Isha End / Shafa Start Today:</ion-label>
+    <ion-input readonly text-right [(ngModel)]="ishae"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="calc">
+    <ion-label text-wrap>Shafa End / Fajr Start Tomorrow:</ion-label>
+    <ion-input readonly text-right [(ngModel)]="fajrs"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="calc">
+    <ion-label text-wrap>Fajr End Tomorrow</ion-label>
+    <ion-input readonly text-right [(ngModel)]="fajre"></ion-input>
+  </ion-item>
+    <ion-item>
+      <ion-label color="success" text-wrap>Sunrise Tomorrow:</ion-label>
+      <ion-datetime class="ip" placeholder="Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunrise2"></ion-datetime>
+    </ion-item>
+  
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap position="fixed">Noon Tomorrow: </ion-label>
+      <ion-input text-right readonly [(ngModel)]="noon"></ion-input>
+    </ion-item>
+  
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr Start Tomorrow: </ion-label>
+      <ion-input readonly text-right [(ngModel)]="zuhrs"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap>Zuhr End Tomorrow:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="zuhre"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="calc">
+      <ion-label text-wrap> Asr End Tomorrow:</ion-label>
+      <ion-input readonly text-right [(ngModel)]="asre"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="success" text-wrap>Sunset / Maghrib Start Tomorrow:</ion-label>
+      <ion-datetime class="ip" display-format=" HH:mm:ss" placeholder="Enter Time" [(ngModel)]="sunset2"></ion-datetime>
+    </ion-item>
+    <!-- End choice 3-------------------------------------- -->
+  </span>
+  </ion-list>
+</div>
 </ion-content>
+<ion-footer>
+  <ion-button  expand="block" (click)="next()" size="large" color="secondary">CALCULATE</ion-button>
+</ion-footer>

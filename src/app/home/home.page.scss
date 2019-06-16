@@ -1,1 +1,21 @@
+#rounded {
 
+        border: 2px solid;
+        border-radius: 5px;
+    }
+
+    .ip{
+        border-bottom: 2px solid rgba(236, 231, 231, 0.849);
+        border-right: 2px solid rgba(236, 231, 231, 0.849);
+        width: 40%;
+        border-radius: 2px;
+	      font:Arial, Helvetica, sans-serif;
+        padding: 7px;
+        box-shadow: inset 3px 3px 3px 3px rgba(236, 231, 231, 0.849);
+        text-align: center;
+    }
+
+    #container {
+        margin-left:auto; 
+        margin-right: auto; 
+    }
