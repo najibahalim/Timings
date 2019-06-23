@@ -5,34 +5,200 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-grid>
+          <ion-row>
+            <ion-col size=1>
+                <ion-icon *ngIf="datetoday!='Manual'" name="md-arrow-dropleft-circle" (click)="prev()"></ion-icon>
+            </ion-col>
+            <ion-col size=10>
+              <div class="ion-text-center">
+            {{datetoday}}
+              </div>
+            </ion-col>
+            <ion-col size=1>
+              <ion-icon *ngIf="datetoday!='Manual'" name="md-arrow-dropright-circle" (click)="next()"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        
+        </ion-card-title>
+      
+      <ion-card-subtitle>
+        <!-- <div class="ion-text-center">
+        <ion-icon *ngIf="datetoday!='Manual'" name="pin"></ion-icon>
+        
+        {{location}}
+      </div> -->
+    </ion-card-subtitle>
+        
+    </ion-card-header>
+  </ion-card>
   <ion-grid>
   
     <ion-row style="border-bottom: 1px solid #7f8c8d;">
-      <ion-col>
-        <div class="ion-text-justify">
-          Sunset Yesterday
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="notifications"></ion-icon>  Shafa End/Fajr Start
         </div>
       </ion-col>
-      <ion-col>
-        <!-- <div class="ion-text-wrap">
-          Sunrise Today
-        </div> -->
-      <ion-input placeholder="Enter Sunrise" clearInput></ion-input>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+         {{fajrs}}
+        </div>
+      <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col> 
+    </ion-row>
+    
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div>
+          <ion-icon name="color-wand"></ion-icon> Fajar End
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+         {{fajre}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
       </ion-col>
     </ion-row>
     
-    <ion-row>
+    <ion-row style="border-bottom: 2px solid #3f2806;">
       <ion-col>
-        <div class="ion-text-justify">
-          Sunset Yesterday
+        <div   size=8>
+          <ion-icon name="partly-sunny"></ion-icon>  Sunrise
         </div>
-      </ion-col>
-      <ion-col>
-        <div class="ion-text-wrap">
-          Sunrise Today
+      </ion-col >
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{sunrise}}
         </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
       </ion-col>
     </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="flower"></ion-icon>  Start of 7th Sa'at
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{start7}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="sunny"></ion-icon>  Noon
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{noon}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div >
+          <ion-icon name="infinite"></ion-icon>  Zuhr Start
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{zuhrs}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+        <ion-icon name="leaf"></ion-icon>  End of 8th Sa'at
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{end8}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="log-out"></ion-icon>  Zuhr End
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+        {{zuhre}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 2px solid #3f2806;">
+      <ion-col  size=8>
+        <div  >
+        <ion-icon name="nuclear"></ion-icon>  Asr End
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{asre}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="cog"></ion-icon>  Sunset
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{sunset}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="pie"></ion-icon>  Isha Start [Approx]
+        </div>
+      </ion-col>
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{ishas}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-bottom: 1px solid #7f8c8d;">
+      <ion-col  size=8>
+        <div  >
+          <ion-icon name="moon"></ion-icon>  Nisful Layl/Shafa Start
+        </div>
+      </ion-col>
+
+      <ion-col  size=4>
+        <div class="ion-text-end">
+          {{ishae}}
+        </div>
+        <!-- <ion-input placeholder="Enter Sunrise" clearInput></ion-input> -->
+      </ion-col>
+    </ion-row>
+
 
   </ion-grid>
 </ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Prayer Timings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+<ion-item>
+  <ion-label text-wrap> Yesterday's Sunset <ion-icon name="cog"></ion-icon></ion-label>
+  <ion-datetime class="ip" placeholder=" Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunsetY"></ion-datetime></ion-item>
+<ion-item>
+  <ion-label text-wrap>Today's Sunrise  <ion-icon name="partly-sunny"></ion-icon></ion-label><ion-datetime class="ip" placeholder=" Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunrise"></ion-datetime></ion-item>
+<ion-item>
+  <ion-label text-wrap>Today's Sunset <ion-icon name="cog"></ion-icon></ion-label>
+  <ion-datetime class="ip" placeholder=" Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunset"></ion-datetime></ion-item>
+<ion-item>
+   <ion-label text-wrap>Tomorrow's Sunrise  <ion-icon name="partly-sunny"></ion-icon></ion-label>
+   <ion-datetime class="ip" placeholder=" Enter Time" display-format=" HH:mm:ss" [(ngModel)]="sunriseT"></ion-datetime></ion-item>
+</ion-list>
+<div class="center">
+<ion-button class="butn" (click)="calcTime()">CALCULATE</ion-button>
+</div>
+
+</ion-content>
